@@ -5,6 +5,7 @@ import sequelize from './db.js';
 import UsuarioModel from './models/Usuario.js';
 import PessoaModel from './models/Pessoa.js';
 import usuarioRoutes from './routes/usuario.js';
+import pessoaRoutes from './routes/pessoa.js';
 
 const app = express();
 app.use(express.json()); 
@@ -17,6 +18,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/usuario', usuarioRoutes);
+app.use('/pessoa', pessoaRoutes);
 
 sequelize.sync().then(() => {
 	app.listen(3000, () => {
