@@ -1,17 +1,17 @@
 meta {
   name: Buscar por Id/Nome/Email
   type: http
-  seq: 2
+  seq: 3
 }
 
 get {
-  url: {{baseUrl}}usuario/:busca
+  url: {{baseUrl}}pessoa/:busca
   body: none
   auth: inherit
 }
 
 params:path {
-  busca: 1
+  busca: 
 }
 
 settings {

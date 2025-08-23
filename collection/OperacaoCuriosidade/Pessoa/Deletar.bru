@@ -1,17 +1,17 @@
 meta {
-  name: Buscar por Id/Nome/Email
+  name: Deletar
   type: http
-  seq: 2
+  seq: 6
 }
 
-get {
-  url: {{baseUrl}}usuario/:busca
+delete {
+  url: {{baseUrl}}pessoa/:id
   body: none
   auth: inherit
 }
 
 params:path {
-  busca: 1
+  id: 
 }
 
 settings {

@@ -3,6 +3,7 @@ import PessoaModel from '../models/Pessoa.js';
 import sequelize from '../db.js';
 import { Op } from 'sequelize';
 import authenticateToken from '../auth.js';
+import dayjs from 'dayjs';
 
 const Pessoa = PessoaModel(sequelize);
 const router = Router();
@@ -11,6 +12,31 @@ const router = Router();
 router.get('/', authenticateToken, async (req, res) => {
     const pessoas = await Pessoa.findAll();
     res.json(pessoas);
+});
+
+// Dashboard
+router.get('/dashboard', authenticateToken, async (req, res) => {
+    const pessoas = await Pessoa.findAll();
+
+    // Total cadastros
+    const totalCadastros = pessoas.length;
+
+    // Cadastros do último mês
+    const mesAtual = dayjs().month() + 1;
+    const cadastrosUltimoMes = pessoas.filter(p => {
+        return p.DataCadastro && dayjs(p.DataCadastro).month() + 1 === mesAtual;
+    }).length;
+
+    // Cadastros pendentes
+    const cadastrosPendentes = pessoas.filter(p => {
+        return Object.values(p.toJSON()).some(v => v === "" || v === null || v === undefined);
+    }).length;
+
+    res.json({
+        TotalCadastros: totalCadastros,
+        CadastrosUltimoMes: cadastrosUltimoMes,
+        CadastrosPendentes: cadastrosPendentes
+    });
 });
 
 // Buscar por ID/Buscar por Nome ou Email

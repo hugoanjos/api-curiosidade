@@ -1,17 +1,13 @@
 meta {
-  name: Buscar por Id/Nome/Email
+  name: Dashboard
   type: http
   seq: 2
 }
 
 get {
-  url: {{baseUrl}}usuario/:busca
+  url: {{baseUrl}}pessoa/dashboard
   body: none
   auth: inherit
-}
-
-params:path {
-  busca: 1
 }
 
 settings {
