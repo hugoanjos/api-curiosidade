@@ -1,0 +1,19 @@
+meta {
+  name: Filtrar por Nome ou Email
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{baseUrl}}usuario/filtrar/:busca
+  body: none
+  auth: inherit
+}
+
+params:path {
+  busca: 
+}
+
+settings {
+  encodeUrl: true
+}

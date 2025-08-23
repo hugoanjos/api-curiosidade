@@ -1,0 +1,27 @@
+meta {
+  name: Atualizar
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{baseUrl}}usuario/:id
+  body: json
+  auth: inherit
+}
+
+params:path {
+  id: 1
+}
+
+body:json {
+  {
+    "Nome": "TesteAtualizar",
+    "Email": "usuario1@teste.com",
+    "Senha": "12345"
+  }
+}
+
+settings {
+  encodeUrl: true
+}

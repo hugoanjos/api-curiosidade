@@ -1,0 +1,23 @@
+meta {
+  name: Criar
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}usuario
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "Nome": "Teste",
+    "Email": "usuario@teste.com",
+    "Senha": "1234"
+  }
+}
+
+settings {
+  encodeUrl: true
+}

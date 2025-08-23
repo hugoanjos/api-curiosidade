@@ -4,6 +4,7 @@ import express from 'express';
 import sequelize from './db.js';
 import UsuarioModel from './models/Usuario.js';
 import PessoaModel from './models/Pessoa.js';
+import usuarioRoutes from './routes/usuario.js';
 
 const app = express();
 app.use(express.json()); 
@@ -14,6 +15,8 @@ const Pessoa = PessoaModel(sequelize);
 app.get('/', (req, res) => {
 	res.send('API do Projeto Operação Curiosidade.');
 });
+
+app.use('/usuario', usuarioRoutes);
 
 sequelize.sync().then(() => {
 	app.listen(3000, () => {

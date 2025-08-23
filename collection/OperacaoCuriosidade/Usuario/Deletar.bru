@@ -1,0 +1,19 @@
+meta {
+  name: Deletar
+  type: http
+  seq: 5
+}
+
+delete {
+  url: {{baseUrl}}usuario/:id
+  body: none
+  auth: inherit
+}
+
+params:path {
+  id: 
+}
+
+settings {
+  encodeUrl: true
+}
