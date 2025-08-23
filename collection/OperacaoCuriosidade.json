@@ -1,0 +1,601 @@
+{
+  "name": "OperacaoCuriosidade",
+  "version": "1",
+  "items": [
+    {
+      "type": "http",
+      "name": "Testar Conexão",
+      "filename": "Testar Conexão.bru",
+      "seq": 1,
+      "settings": {
+        "encodeUrl": true
+      },
+      "tags": [],
+      "request": {
+        "url": "{{baseUrl}}",
+        "method": "GET",
+        "headers": [],
+        "params": [],
+        "body": {
+          "mode": "none",
+          "formUrlEncoded": [],
+          "multipartForm": [],
+          "file": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "inherit"
+        }
+      }
+    },
+    {
+      "type": "folder",
+      "name": "Usuario",
+      "filename": "Usuario",
+      "seq": 2,
+      "root": {
+        "request": {
+          "auth": {
+            "mode": "inherit"
+          }
+        },
+        "meta": {
+          "name": "Usuario",
+          "seq": 2
+        }
+      },
+      "items": [
+        {
+          "type": "http",
+          "name": "Buscar Todos",
+          "filename": "Buscar Todos.bru",
+          "seq": 1,
+          "settings": {
+            "encodeUrl": true
+          },
+          "tags": [],
+          "request": {
+            "url": "{{baseUrl}}usuario",
+            "method": "GET",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "inherit"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Buscar por Id/Nome/Email",
+          "filename": "Buscar por Id-Nome-Email.bru",
+          "seq": 2,
+          "settings": {
+            "encodeUrl": true
+          },
+          "tags": [],
+          "request": {
+            "url": "{{baseUrl}}usuario/:busca",
+            "method": "GET",
+            "headers": [],
+            "params": [
+              {
+                "name": "busca",
+                "value": "1",
+                "type": "path",
+                "enabled": true
+              }
+            ],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "inherit"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Criar",
+          "filename": "Criar.bru",
+          "seq": 3,
+          "settings": {
+            "encodeUrl": true
+          },
+          "tags": [],
+          "request": {
+            "url": "{{baseUrl}}usuario",
+            "method": "POST",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"Nome\": \"Teste\",\n  \"Email\": \"usuario@teste.com\",\n  \"Senha\": \"1234\"\n}",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "inherit"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Atualizar",
+          "filename": "Atualizar.bru",
+          "seq": 4,
+          "settings": {
+            "encodeUrl": true
+          },
+          "tags": [],
+          "request": {
+            "url": "{{baseUrl}}usuario/:id",
+            "method": "PUT",
+            "headers": [],
+            "params": [
+              {
+                "name": "id",
+                "value": "1",
+                "type": "path",
+                "enabled": true
+              }
+            ],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"Nome\": \"TesteAtualizar\",\n  \"Email\": \"usuario1@teste.com\",\n  \"Senha\": \"12345\"\n}",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "inherit"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Deletar",
+          "filename": "Deletar.bru",
+          "seq": 5,
+          "settings": {
+            "encodeUrl": true
+          },
+          "tags": [],
+          "request": {
+            "url": "{{baseUrl}}usuario/:id",
+            "method": "DELETE",
+            "headers": [],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "enabled": true
+              }
+            ],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "inherit"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Filtrar por Nome ou Email",
+          "filename": "Filtrar por Nome ou Email.bru",
+          "seq": 6,
+          "settings": {
+            "encodeUrl": true
+          },
+          "tags": [],
+          "request": {
+            "url": "{{baseUrl}}usuario/filtrar/:busca",
+            "method": "GET",
+            "headers": [],
+            "params": [
+              {
+                "name": "busca",
+                "value": "",
+                "type": "path",
+                "enabled": true
+              }
+            ],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "inherit"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Login",
+          "filename": "Login.bru",
+          "seq": 7,
+          "settings": {
+            "encodeUrl": true
+          },
+          "tags": [],
+          "request": {
+            "url": "{{baseUrl}}usuario/login",
+            "method": "POST",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"Email\": \"usuario@teste.com\",\n  \"Senha\": \"1234\"\n}",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {
+              "res": [
+                {
+                  "name": "authToken",
+                  "value": "res.body.token",
+                  "enabled": true,
+                  "local": false
+                }
+              ]
+            },
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "inherit"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "folder",
+      "name": "Pessoa",
+      "filename": "Pessoa",
+      "seq": 3,
+      "root": {
+        "request": {
+          "auth": {
+            "mode": "inherit"
+          }
+        },
+        "meta": {
+          "name": "Pessoa",
+          "seq": 3
+        }
+      },
+      "items": [
+        {
+          "type": "http",
+          "name": "Buscar Todos",
+          "filename": "Buscar Todos.bru",
+          "seq": 1,
+          "settings": {
+            "encodeUrl": true
+          },
+          "tags": [],
+          "request": {
+            "url": "{{baseUrl}}pessoa",
+            "method": "GET",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "inherit"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Dashboard",
+          "filename": "Dashboard.bru",
+          "seq": 2,
+          "settings": {
+            "encodeUrl": true
+          },
+          "tags": [],
+          "request": {
+            "url": "{{baseUrl}}pessoa/dashboard",
+            "method": "GET",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "inherit"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Buscar por Id/Nome/Email",
+          "filename": "Buscar por Id-Nome-Email.bru",
+          "seq": 3,
+          "settings": {
+            "encodeUrl": true
+          },
+          "tags": [],
+          "request": {
+            "url": "{{baseUrl}}pessoa/:busca",
+            "method": "GET",
+            "headers": [],
+            "params": [
+              {
+                "name": "busca",
+                "value": "",
+                "type": "path",
+                "enabled": true
+              }
+            ],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "inherit"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Criar",
+          "filename": "Criar.bru",
+          "seq": 4,
+          "settings": {
+            "encodeUrl": true
+          },
+          "tags": [],
+          "request": {
+            "url": "{{baseUrl}}pessoa",
+            "method": "POST",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"Nome\": \"Hugo\",\n  \"Idade\": 29,\n  \"Email\": \"hugo.h.anjos@icloud.com\"\n}",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "inherit"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Atualizar",
+          "filename": "Atualizar.bru",
+          "seq": 5,
+          "settings": {
+            "encodeUrl": true
+          },
+          "tags": [],
+          "request": {
+            "url": "{{baseUrl}}pessoa/:id",
+            "method": "PUT",
+            "headers": [],
+            "params": [
+              {
+                "name": "id",
+                "value": "1",
+                "type": "path",
+                "enabled": true
+              }
+            ],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"Nome\": \"Hugo Anjos\",\n  \"Idade\": 29,\n  \"Email\": \"hugo.h.anjos@icloud.com\",\n  \"Endereco\": \"Rua Teste, 123\",\n  \"OutrasInformacoes\": \"Informações adicionais\",\n  \"Interesses\": \"Programação, Música, Jogos\",\n  \"Sentimentos\": \"Confiança\",\n  \"Valores\": \"Honestidade e Lealdade\",\n  \"Ativo\": true,\n  \"Deletado\": false\n}",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "inherit"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Deletar",
+          "filename": "Deletar.bru",
+          "seq": 6,
+          "settings": {
+            "encodeUrl": true
+          },
+          "tags": [],
+          "request": {
+            "url": "{{baseUrl}}pessoa/:id",
+            "method": "DELETE",
+            "headers": [],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "enabled": true
+              }
+            ],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "inherit"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Filtrar por Nome ou Email",
+          "filename": "Filtrar por Nome ou Email.bru",
+          "seq": 7,
+          "settings": {
+            "encodeUrl": true
+          },
+          "tags": [],
+          "request": {
+            "url": "{{baseUrl}}pessoa/filtrar/:busca",
+            "method": "GET",
+            "headers": [],
+            "params": [
+              {
+                "name": "busca",
+                "value": "",
+                "type": "path",
+                "enabled": true
+              }
+            ],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "inherit"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "activeEnvironmentUid": "ZW8xelWA9dcmOHa8EyjNs",
+  "environments": [
+    {
+      "variables": [
+        {
+          "name": "baseUrl",
+          "value": "http://localhost:3000/",
+          "enabled": true,
+          "secret": false,
+          "type": "text"
+        }
+      ],
+      "name": "OperacaoCuriosidade"
+    }
+  ],
+  "root": {
+    "request": {
+      "auth": {
+        "mode": "bearer",
+        "bearer": {
+          "token": "{{authToken}}"
+        }
+      },
+      "vars": {}
+    }
+  },
+  "brunoConfig": {
+    "version": "1",
+    "name": "OperacaoCuriosidade",
+    "type": "collection",
+    "ignore": [
+      "node_modules",
+      ".git"
+    ],
+    "size": 0.0013074874877929688,
+    "filesCount": 9
+  }
+}
