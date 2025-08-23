@@ -1,0 +1,468 @@
+{
+  "info": {
+    "name": "OperacaoCuriosidade",
+    "description": "",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Testar Conexão",
+      "event": [],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "auth": {
+          "type": "noauth"
+        },
+        "description": "",
+        "url": {
+          "raw": "{{baseUrl}}",
+          "protocol": "",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [],
+          "query": [],
+          "variable": []
+        }
+      }
+    },
+    {
+      "name": "Usuario",
+      "item": [
+        {
+          "name": "Buscar Todos",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{baseUrl}}usuario",
+              "protocol": "",
+              "host": [
+                "{{baseUrl}}usuario"
+              ],
+              "path": [],
+              "query": [],
+              "variable": []
+            }
+          }
+        },
+        {
+          "name": "Buscar por Id/Nome/Email",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{baseUrl}}usuario/:busca",
+              "protocol": "",
+              "host": [
+                "{{baseUrl}}usuario"
+              ],
+              "path": [
+                ":busca"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "busca",
+                  "value": "1"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Criar",
+          "event": [],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{baseUrl}}usuario",
+              "protocol": "",
+              "host": [
+                "{{baseUrl}}usuario"
+              ],
+              "path": [],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Nome\": \"Teste\",\n  \"Email\": \"usuario@teste.com\",\n  \"Senha\": \"1234\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Atualizar",
+          "event": [],
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{baseUrl}}usuario/:id",
+              "protocol": "",
+              "host": [
+                "{{baseUrl}}usuario"
+              ],
+              "path": [
+                ":id"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "1"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Nome\": \"TesteAtualizar\",\n  \"Email\": \"usuario1@teste.com\",\n  \"Senha\": \"12345\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Deletar",
+          "event": [],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{baseUrl}}usuario/:id",
+              "protocol": "",
+              "host": [
+                "{{baseUrl}}usuario"
+              ],
+              "path": [
+                ":id"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": ""
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Filtrar por Nome ou Email",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{baseUrl}}usuario/filtrar/:busca",
+              "protocol": "",
+              "host": [
+                "{{baseUrl}}usuario"
+              ],
+              "path": [
+                "filtrar",
+                ":busca"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "busca",
+                  "value": ""
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Login",
+          "event": [],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{baseUrl}}usuario/login",
+              "protocol": "",
+              "host": [
+                "{{baseUrl}}usuario"
+              ],
+              "path": [
+                "login"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Email\": \"usuario@teste.com\",\n  \"Senha\": \"1234\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Pessoa",
+      "item": [
+        {
+          "name": "Buscar Todos",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{baseUrl}}pessoa",
+              "protocol": "",
+              "host": [
+                "{{baseUrl}}pessoa"
+              ],
+              "path": [],
+              "query": [],
+              "variable": []
+            }
+          }
+        },
+        {
+          "name": "Dashboard",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{baseUrl}}pessoa/dashboard",
+              "protocol": "",
+              "host": [
+                "{{baseUrl}}pessoa"
+              ],
+              "path": [
+                "dashboard"
+              ],
+              "query": [],
+              "variable": []
+            }
+          }
+        },
+        {
+          "name": "Buscar por Id/Nome/Email",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{baseUrl}}pessoa/:busca",
+              "protocol": "",
+              "host": [
+                "{{baseUrl}}pessoa"
+              ],
+              "path": [
+                ":busca"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "busca",
+                  "value": ""
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Criar",
+          "event": [],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{baseUrl}}pessoa",
+              "protocol": "",
+              "host": [
+                "{{baseUrl}}pessoa"
+              ],
+              "path": [],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Nome\": \"Hugo\",\n  \"Idade\": 29,\n  \"Email\": \"hugo.h.anjos@icloud.com\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Atualizar",
+          "event": [],
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{baseUrl}}pessoa/:id",
+              "protocol": "",
+              "host": [
+                "{{baseUrl}}pessoa"
+              ],
+              "path": [
+                ":id"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "1"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Nome\": \"Hugo Anjos\",\n  \"Idade\": 29,\n  \"Email\": \"hugo.h.anjos@icloud.com\",\n  \"Endereco\": \"Rua Teste, 123\",\n  \"OutrasInformacoes\": \"Informações adicionais\",\n  \"Interesses\": \"Programação, Música, Jogos\",\n  \"Sentimentos\": \"Confiança\",\n  \"Valores\": \"Honestidade e Lealdade\",\n  \"Ativo\": true,\n  \"Deletado\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Deletar",
+          "event": [],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{baseUrl}}pessoa/:id",
+              "protocol": "",
+              "host": [
+                "{{baseUrl}}pessoa"
+              ],
+              "path": [
+                ":id"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": ""
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Filtrar por Nome ou Email",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{baseUrl}}pessoa/filtrar/:busca",
+              "protocol": "",
+              "host": [
+                "{{baseUrl}}pessoa"
+              ],
+              "path": [
+                "filtrar",
+                ":busca"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "busca",
+                  "value": ""
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "",
+      "type": "default"
+    },
+    {
+      "key": "authToken",
+      "value": "",
+      "type": "default"
+    }
+  ]
+}
