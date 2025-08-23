@@ -3,18 +3,20 @@ import bcrypt from 'bcrypt';
 import UsuarioModel from '../models/Usuario.js';
 import sequelize from '../db.js';
 import { Op } from 'sequelize';
+import authenticateToken from '../auth.js';
+import jwt from 'jsonwebtoken';
 
 const Usuario = UsuarioModel(sequelize);
 const router = Router();
 
 // Buscar todos
-router.get('/', async (req, res) => {
+router.get('/', authenticateToken, async (req, res) => {
     const usuarios = await Usuario.findAll();
     res.json(usuarios);
 });
 
 // Buscar por ID/Buscar por Nome ou Email
-router.get('/:busca', async (req, res) => {
+router.get('/:busca', authenticateToken, async (req, res) => {
     const { busca } = req.params;
 
     // se busca é um número, busca por id
@@ -59,7 +61,7 @@ router.post('/', async (req, res) => {
 });
 
 // Atualizar
-router.put('/:id', async (req, res) => {
+router.put('/:id', authenticateToken, async (req, res) => {
     const { id } = req.params;
     const { Nome, Email, Senha } = req.body;
 
@@ -79,7 +81,7 @@ router.put('/:id', async (req, res) => {
 });
 
 // Deletar
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', authenticateToken, async (req, res) => {
     const usuario = await Usuario.findByPk(req.params.id);
     if (!usuario) {
         return res.status(404).json({ error: 'Usuário não encontrado' });
@@ -89,7 +91,7 @@ router.delete('/:id', async (req, res) => {
 });
 
 // Filtrar por nome ou email
-router.get('/filtrar/:busca', async (req, res) => {
+router.get('/filtrar/:busca', authenticateToken, async (req, res) => {
     const busca = req.params.busca;
     if (!busca) {
         return res.status(400).json({ error: 'A busca não pode ser vazia' });
@@ -106,6 +108,32 @@ router.get('/filtrar/:busca', async (req, res) => {
         return res.status(404).json({ error: 'Pessoa não encontrada' });
     }
     res.json(usuarios);
+});
+
+// Login
+router.post('/login', async (req, res) => {
+    const { Email, Senha } = req.body;
+    if (!Email || !Senha) {
+        return res.status(400).json({ error: 'Dados inválidos' });
+    }
+
+    const usuario = await Usuario.findOne({ where: { Email } });
+    if (!usuario) {
+        return res.status(401).json({ error: 'Email inválido' });
+    }
+
+    const senhaValida = await bcrypt.compare(Senha, usuario.Senha);
+    if (!senhaValida) {
+        return res.status(401).json({ error: 'Senha incorreta' });
+    }
+
+    const token = jwt.sign(
+        { id: usuario.id, email: usuario.Email },
+        process.env.JWT_SECRET,
+        { expiresIn: '1h' }
+    );
+
+    res.json({ token });
 });
 
 export default router;

@@ -1,0 +1,26 @@
+meta {
+  name: Login
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{baseUrl}}usuario/login
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "Email": "usuario@teste.com",
+    "Senha": "1234"
+  }
+}
+
+vars:post-response {
+  authToken: res.body.token
+}
+
+settings {
+  encodeUrl: true
+}
