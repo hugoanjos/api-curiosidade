@@ -139,7 +139,11 @@ router.post('/login', async (req, res) => {
         { expiresIn: '1h' }
     );
 
-    res.json({ token });
+    res.json({
+        token,
+        id: usuario.id,
+        nome: usuario.Nome
+    });
 });
 
 export default router;
