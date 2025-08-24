@@ -70,6 +70,11 @@ router.put('/:id', authenticateToken, async (req, res) => {
         return res.status(404).json({ error: 'Usuário não encontrado' });
     }
 
+    // Permite o usuário ser reativado, mas bloqueia atualização em usuário deletado
+    if (usuario.Deletado && !('Deletado' in req.body && req.body.Deletado === false)) {
+        return res.status(403).json({ error: 'Esse usuário foi removido.' });
+    }
+
     usuario.Nome = Nome ?? usuario.Nome;
     usuario.Email = Email ?? usuario.Email;
     if (Senha) {
@@ -86,7 +91,8 @@ router.delete('/:id', authenticateToken, async (req, res) => {
     if (!usuario) {
         return res.status(404).json({ error: 'Usuário não encontrado' });
     }
-    await usuario.destroy();
+    usuario.Deletado = true;
+    await usuario.save();
     res.status(204).send();
 });
 
@@ -117,7 +123,7 @@ router.post('/login', async (req, res) => {
         return res.status(400).json({ error: 'Dados inválidos' });
     }
 
-    const usuario = await Usuario.findOne({ where: { Email } });
+    const usuario = await Usuario.findOne({ where: { Email, Deletado: false } });
     if (!usuario) {
         return res.status(401).json({ error: 'Email inválido' });
     }

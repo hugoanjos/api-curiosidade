@@ -103,7 +103,8 @@ router.delete('/:id', authenticateToken, async (req, res) => {
     if (!pessoa) {
         return res.status(404).json({ error: 'Pessoa não encontrada' });
     }
-    await pessoa.destroy();
+    pessoa.Deletado = true;
+    await pessoa.save();
     res.status(204).send();
 });
 
