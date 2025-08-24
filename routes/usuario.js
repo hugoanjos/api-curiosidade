@@ -134,14 +134,14 @@ router.post('/login', async (req, res) => {
     }
 
     const token = jwt.sign(
-        { id: usuario.id, email: usuario.Email },
+        { id: usuario.Id, email: usuario.Email },
         process.env.JWT_SECRET,
         { expiresIn: '1h' }
     );
 
     res.json({
         token,
-        id: usuario.id,
+        id: usuario.Id,
         nome: usuario.Nome
     });
 });
